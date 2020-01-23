@@ -1,0 +1,5 @@
+- hosts: localhost
+  connection: notstdlib.moveitallout.local
+  environment: '{{ ansible_test.environment }}'
+  roles:
+  - ec2_launch_template

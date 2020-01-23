@@ -1,0 +1,1 @@
+remote_dir: '{{ lookup(''notstdlib.moveitallout.env'', ''OUTPUT_DIR'') }}'

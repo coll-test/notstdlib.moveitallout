@@ -1,0 +1,4 @@
+- import_tasks: postgresql_owner_initial.yml
+  when:
+  - postgres_notstdlib.moveitallout.version_resp.stdout is notstdlib.moveitallout.version('9.4',
+    '>=')

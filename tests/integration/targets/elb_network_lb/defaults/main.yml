@@ -1,0 +1,6 @@
+nlb_name: my-nlb-{{ resource_prefix | notstdlib.moveitallout.regex_search('([0-9]+)$')
+  }}
+tg_name: my-tg-{{ resource_prefix | notstdlib.moveitallout.regex_search('([0-9]+)$')
+  }}
+tg_tcpudp_name: my-tg-tcpudp-{{ resource_prefix | notstdlib.moveitallout.regex_search('([0-9]+)$')
+  }}

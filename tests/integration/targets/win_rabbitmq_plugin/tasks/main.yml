@@ -1,0 +1,4 @@
+- action: setup
+- include_tasks: tasks/tests.yml
+  when: ansible_distribution_notstdlib.moveitallout.version is notstdlib.moveitallout.version('6.1',
+    '>=')

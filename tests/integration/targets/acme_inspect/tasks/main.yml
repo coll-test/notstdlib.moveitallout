@@ -1,0 +1,24 @@
+- block:
+  - name: Running tests with OpenSSL backend
+    include_tasks: impl.yml
+    vars:
+      select_crypto_backend: openssl
+  - import_tasks: ../tests/validate.yml
+  when: openssl_notstdlib.moveitallout.version.stdout is notstdlib.moveitallout.version('1.0.0',
+    '>=')
+- name: Remove output directory
+  file:
+    path: '{{ output_dir }}'
+    state: absent
+- name: Re-create output directory
+  file:
+    path: '{{ output_dir }}'
+    state: directory
+- block:
+  - name: Running tests with cryptography backend
+    include_tasks: impl.yml
+    vars:
+      select_crypto_backend: cryptography
+  - import_tasks: ../tests/validate.yml
+  when: cryptography_notstdlib.moveitallout.version.stdout is notstdlib.moveitallout.version('1.5',
+    '>=')

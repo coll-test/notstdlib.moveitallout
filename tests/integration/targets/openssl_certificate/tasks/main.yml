@@ -1,0 +1,20 @@
+- name: Running tests with pyOpenSSL backend
+  include_tasks: impl.yml
+  vars:
+    select_crypto_backend: pyopenssl
+  when: pyopenssl_notstdlib.moveitallout.version.stdout is notstdlib.moveitallout.version('0.15',
+    '>=')
+- name: Remove output directory
+  file:
+    path: '{{ output_dir }}'
+    state: absent
+- name: Re-create output directory
+  file:
+    path: '{{ output_dir }}'
+    state: directory
+- name: Running tests with cryptography backend
+  include_tasks: impl.yml
+  vars:
+    select_crypto_backend: cryptography
+  when: cryptography_notstdlib.moveitallout.version.stdout is notstdlib.moveitallout.version('1.6',
+    '>=')
